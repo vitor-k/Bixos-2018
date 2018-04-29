@@ -11,7 +11,9 @@ int main () {
     timer_init();
     sensors_init();
     for (;;) {
+        /* code */
 
+        test_stop();
     }
     return 0;
 }
