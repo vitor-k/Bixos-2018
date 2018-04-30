@@ -24,7 +24,7 @@ int main () {
 		}
 
 		tempo = get_tick()
-		if tempo >= 5000000 { /* 5000000µs → 5s */
+		if (tempo >= 5000000) { /* 5000000µs → 5s */
 			flag = 1;
 		}
 
