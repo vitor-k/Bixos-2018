@@ -41,7 +41,7 @@ void update_distance_sensors() {
 /* para os motores caso o robo detecte a linha*/
 void test_stop(){
     update_line_sensors();
-    if(line_sensors[RIGHT] && line_sensors[LEFT])
+    if(line_sensors[RIGHT] || line_sensors[LEFT])
     {
         motors(0,0);
     }
