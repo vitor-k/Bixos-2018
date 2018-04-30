@@ -13,6 +13,7 @@ int main () {
     timer_init();
     sensors_init();
 	int flag = 0;
+	uint32_t tempo;
     for (;;) {
 		update_distance_sensors();
 		if(distance_sensors[LEFT] || distance_sensors[RIGHT]){ /**/
@@ -21,7 +22,12 @@ int main () {
 		else{
 			flag = 0;
 		}
-		
+
+		tempo = get_tick()
+		if tempo >= 5000000 { /* 5000000µs → 5s */
+			flag = 1;
+		}
+
 		if(flag){
 			motors(SPEED, SPEED);
 		}
