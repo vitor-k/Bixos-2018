@@ -24,7 +24,7 @@ void wait_n_see () {
 		}
 
 		tempo = get_tick();
-		if (tempo >= 5000) { /* 5000 ms → 5s */
+		if (tempo >= 5000000) { /* 5000000 us → 5s */
 			flag = 1;
 		}
 
