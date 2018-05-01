@@ -5,11 +5,10 @@
 #include "sensors.h"
 #include "motors.h"
 #include "timer.h"
+#include "strategies.h"
 
-#define SPEED 255
-#define TURN_SPEED 128
 
-int main () {
+void search_rotate () {
     motors_init();
     timer_init();
     sensors_init();
@@ -34,5 +33,6 @@ int main () {
 
 		test_stop();
     }
-    return 0;
+    
 }
+
