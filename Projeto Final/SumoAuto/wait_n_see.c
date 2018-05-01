@@ -34,6 +34,8 @@ int main () {
 		else{
 			motors(0,0);
 		}
+
+		test_stop();
     }
     return 0;
 }

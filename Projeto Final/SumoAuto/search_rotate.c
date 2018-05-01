@@ -31,6 +31,8 @@ int main () {
 		else{
 			motors(TURN_SPEED,-TURN_SPEED);
 		}
+
+		test_stop();
     }
     return 0;
 }

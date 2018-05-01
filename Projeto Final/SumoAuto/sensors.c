@@ -1,5 +1,6 @@
 #include <avr/io.h>
 #include "sensors.h"
+#include "motors.h"
 
 uint16_t line_sensors[2];
 uint16_t distance_sensors[2];
@@ -35,4 +36,13 @@ void update_distance_sensors() {
     ADCSRA |= (1 << ADSC);
     while (ADCSRA & (1 << ADSC));
     distance_sensors[1] = ADC;
+}
+
+/* para os motores caso o robo detecte a linha*/
+void test_stop(){
+    update_line_sensors();
+    if(line_sensors[RIGHT] || line_sensors[LEFT])
+    {
+        motors(0,0);
+    }
 }
