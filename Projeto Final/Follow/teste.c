@@ -11,9 +11,12 @@
 /*verificar como os sensores funcionam e definir a threshold corretamente*/
 #define MULTIPLIER 16
 
+#define PROP 1
+#define INTG 1
+#define DERI 1
 #define AMORTECIMENTO 0.8f
 
-#define DELAY 5
+#define DELAY 50
 
 #define SPEED 128
 
@@ -43,20 +46,23 @@ int main(void) {
 	int erro_integral=0;
 	int erro_diferencial=0;
 	int outp;
+	uint32_t tempo=0;
 	uint32_t dt=0;
+	
 	for (;;) {
-		dt += get_tick();
+		dt = get_tick() - tempo;
 		if(dt > DELAY){
 			sensors_update();
 			erro = traduz();
 			erro_integral = erro_integral*AMORTECIMENTO + erro*dt;
 			erro_diferencial = (erro - erro_anterior)/dt;
-			outp = erro + erro_integral + erro_diferencial;
+			outp = PROP * erro + INTG * erro_integral + DERI * erro_diferencial;
 			
 			set_motors(SPEED+outp, SPEED-outp);
 			
-			dt = 0;
+			tempo = get_tick();
 		}
 	}
 	return 0;
 }
+

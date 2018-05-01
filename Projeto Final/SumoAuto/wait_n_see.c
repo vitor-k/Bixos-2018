@@ -5,10 +5,10 @@
 #include "sensors.h"
 #include "motors.h"
 #include "timer.h"
+#include "strategies.h"
 
-#define SPEED 255
 
-int main () {
+void wait_n_see () {
     motors_init();
     timer_init();
     sensors_init();
@@ -23,8 +23,8 @@ int main () {
 			flag = 0;
 		}
 
-		tempo = get_tick()
-		if (tempo >= 5000000) { /* 5000000µs → 5s */
+		tempo = get_tick();
+		if (tempo >= 5000) { /* 5000 ms → 5s */
 			flag = 1;
 		}
 
@@ -37,5 +37,6 @@ int main () {
 
 		test_stop();
     }
-    return 0;
+    
 }
+

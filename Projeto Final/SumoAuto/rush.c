@@ -5,13 +5,13 @@
 #include "sensors.h"
 #include "motors.h"
 #include "timer.h"
+#include "strategies.h"
 
-#define SPEED 255
 
-int main() {
+void rush() {
     motors_init();
     sensors_init();
-    motors(SPEED,SPEED)
+    motors(SPEED,SPEED);
     for (;;){
         test_stop();
     }
