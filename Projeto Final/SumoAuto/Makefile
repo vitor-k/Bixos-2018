@@ -1,11 +1,10 @@
+.PHONY:clean
 
-#avr-gcc -c arquivo.c -o arquivo.o -mmcu=id_microcontrolador -std=c99 -Wall -Wextra -Os
-#avr-gcc -o main.elf <arquivos objeto> -mmcu=id_microcontrolador -std=c99 -Wall -Wextra -Os
-#avr-objcopy -j .text -j .data -O ihex main.elf main.hex
-.PHONY : clean
-
-clean: 
-	rm main.o motors.o sensors.o utils.o timer.o rush.o search_rotate.o wait_n_see.o main.elf
+clean:
+	rm main.o motors.o sensors.o utils.o timer.o rush.o search_rotate.o wait_n_see.o main.
+	
+flash: main.hex
+	avrdude -c usbasp -p m168pb -U flash:w:main.hex:i
 	
 main.hex : main.elf
 	avr-objcopy -j .text -j .data -O ihex main.elf main.hex
@@ -14,27 +13,29 @@ main.elf : main.o motors.o sensors.o utils.o timer.o rush.o search_rotate.o wait
 	avr-gcc -o main.elf main.o motors.o sensors.o utils.o timer.o rush.o search_rotate.o wait_n_see.o -mmcu=atmega168 -std=c99 -Wall -Wextra -Os
 
 main.o : main.c
-	avr-gcc -c main.c -o main.o -mmcu=atmega168 -std=c99 -Wall -Wextra -Os
+	avr-gcc -c main.c -o main.o -mmcu=atmega168 -std=c99 -Wall -Wextra -Os -DF_CPU=16000000
 
 timer.o : timer.c
-	avr-gcc -c timer.c -o timer.o -mmcu=atmega168 -std=c99 -Wall -Wextra -Os
+	avr-gcc -c timer.c -o timer.o -mmcu=atmega168 -std=c99 -Wall -Wextra -Os -DF_CPU=16000000
 
 utils.o : utils.c
-	avr-gcc -c utils.c -o utils.o -mmcu=atmega168 -std=c99 -Wall -Wextra -Os
+	avr-gcc -c utils.c -o utils.o -mmcu=atmega168 -std=c99 -Wall -Wextra -Os -DF_CPU=16000000
 
 sensors.o : sensors.c
-	avr-gcc -c sensors.c -o sensors.o -mmcu=atmega168 -std=c99 -Wall -Wextra -Os
+	avr-gcc -c sensors.c -o sensors.o -mmcu=atmega168 -std=c99 -Wall -Wextra -Os -DF_CPU=16000000
 
 motors.o : motors.c
-	avr-gcc -c motors.c -o motors.o -mmcu=atmega168 -std=c99 -Wall -Wextra -Os
+	avr-gcc -c motors.c -o motors.o -mmcu=atmega168 -std=c99 -Wall -Wextra -Os -DF_CPU=16000000
 
 wait_n_see.o : wait_n_see.c
-	avr-gcc -c wait_n_see.c -o wait_n_see.o -mmcu=atmega168 -std=c99 -Wall -Wextra -Os
+	avr-gcc -c wait_n_see.c -o wait_n_see.o -mmcu=atmega168 -std=c99 -Wall -Wextra -Os -DF_CPU=16000000
 
 rush.o : rush.c
-	avr-gcc -c rush.c -o rush.o -mmcu=atmega168 -std=c99 -Wall -Wextra -Os
+	avr-gcc -c rush.c -o rush.o -mmcu=atmega168 -std=c99 -Wall -Wextra -Os -DF_CPU=16000000
 
 search_rotate.o : search_rotate.c
-	avr-gcc -c search_rotate.c -o search_rotate.o -mmcu=atmega168 -std=c99 -Wall -Wextra -Os
+	avr-gcc -c search_rotate.c -o search_rotate.o -mmcu=atmega168 -std=c99 -Wall -Wextra -Os -DF_CPU=16000000
+
+	
 
 

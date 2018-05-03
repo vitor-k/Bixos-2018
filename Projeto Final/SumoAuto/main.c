@@ -13,12 +13,12 @@ int main () {
     motors_init();
     timer_init();
     sensors_init();
-	
+
 	typedef void(*StrategyFunction)();
-	
-	int escolhida = 0; /*uma maneira eh usar esta variavel para escolher a estrategia, ou pode usar um define*/
+
+	int escolhida = 1; /*uma maneira eh usar esta variavel para escolher a estrategia, ou pode usar um define*/
 	StrategyFunction strategy;
-	
+
 	switch(escolhida){
 		case 0:
 			strategy = rush;
@@ -30,8 +30,8 @@ int main () {
 			strategy = search_rotate;
 			break;
 	}
-	
+
     strategy();
-	
+
     return 0;
 }
