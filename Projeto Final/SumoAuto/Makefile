@@ -1,11 +1,13 @@
-.PHONY:clean
+.PHONY:clean, all
+
+all: flash
 
 clean:
-	rm main.o motors.o sensors.o utils.o timer.o rush.o search_rotate.o wait_n_see.o main.
-	
+	rm main.o motors.o sensors.o utils.o timer.o rush.o search_rotate.o wait_n_see.o main.elf main.hex
+
 flash: main.hex
 	avrdude -c usbasp -p m168pb -U flash:w:main.hex:i
-	
+
 main.hex : main.elf
 	avr-objcopy -j .text -j .data -O ihex main.elf main.hex
 
@@ -35,7 +37,3 @@ rush.o : rush.c
 
 search_rotate.o : search_rotate.c
 	avr-gcc -c search_rotate.c -o search_rotate.o -mmcu=atmega168 -std=c99 -Wall -Wextra -Os -DF_CPU=16000000
-
-	
-
-

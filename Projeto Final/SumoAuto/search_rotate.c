@@ -28,7 +28,7 @@ void search_rotate () {
 		if (tempo >= 5000000) { /* 5000000 us → 5s */
 			flag = 1;
 		}
-		
+
 		if(flag){
 			motors(SPEED, SPEED);
 		}
@@ -36,19 +36,8 @@ void search_rotate () {
 			motors(TURN_SPEED,-TURN_SPEED);
 		}
 
-		stop = test_stop();
-		if(stop){
-			motors(-SPEED,-SPEED);
-			_delay_ms(500);
-			motors(-TURN_SPEED,TURN_SPEED);
-			timer3 = get_tick();
-			while(timer4-timer3 < 1000000 && !(distance_sensors[LEFT] || distance_sensors[RIGHT])){
-				timer4 = get_tick();
-				update_distance_sensors();	
-			}
-			motors(0,0);
+		rush()
 		};
     }
-    
-}
 
+}

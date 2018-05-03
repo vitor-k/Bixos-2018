@@ -10,8 +10,6 @@
 
 void rush() {
 	int stop = 0;
-	uint32_t timer3;
-	uint32_t timer4 = 0;
     motors(SPEED,SPEED);
 
     for (;;){
@@ -20,10 +18,7 @@ void rush() {
 			motors(-SPEED,-SPEED);
 			_delay_ms(500);
 			motors(-TURN_SPEED,TURN_SPEED);
-			timer3 = get_tick();
-			while (get_tick() - timer3 < 1000000 /* && !(distance_sensors[LEFT] || distance_sensors[RIGHT])*/){
-                update_distance_sensors();
-			}
+			_delay_ms(1000)
 			motors(SPEED,SPEED);
 		};
     }

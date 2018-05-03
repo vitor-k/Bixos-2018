@@ -4,10 +4,6 @@
 
 uint16_t line_sensors[2];
 uint16_t distance_sensors[2];
-uint32_t timer1;
-uint32_t timer2 = 0;
-uint32_t timer3;
-uint32_t timer4 = 0;
 
 /* inicializa os sensores */
 void sensors_init() {
@@ -45,7 +41,7 @@ void update_distance_sensors() {
 /* para os motores caso o robo detecte a linha*/
 int test_stop(){
     update_line_sensors();
-    if(line_sensors[RIGHT] >= 800 || line_sensors[LEFT] >= 800)
+    if(line_sensors[RIGHT] <= 200 || line_sensors[LEFT] <=200)/* valores inversos devido ao sensor possivelmente lendo o inverso*/
     {
         motors(0,0);
         return 1;
