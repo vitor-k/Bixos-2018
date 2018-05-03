@@ -10,10 +10,10 @@
 
 void rush() {
 	int stop = 0;
-	int timer1;
-	int timer2 = 0;
-	int timer3;
-	int timer4 = 0;
+	uint32_t timer1;
+	uint32_t timer2 = 0;
+	uint32_t timer3;
+	uint32_t timer4 = 0;
     motors_init();
     sensors_init();
     motors(SPEED,SPEED);

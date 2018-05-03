@@ -14,10 +14,10 @@ void wait_n_see () {
     sensors_init();
 	int flag = 0;
 	int stop = 0;
-	int timer1;
-	int timer2 = 0;
-	int timer3;
-	int timer4 = 0;
+	uint32_t timer1;
+	uint32_t timer2 = 0;
+	uint32_t timer3;
+	uint32_t timer4 = 0;
 	uint32_t tempo;
     for (;;) {
 		update_distance_sensors();
