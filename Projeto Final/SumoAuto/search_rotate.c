@@ -14,6 +14,11 @@ void search_rotate () {
     sensors_init();
 	
 	int flag = 0;
+	int stop = 0;
+	int timer1;
+	int timer2 = 0;
+	int timer3;
+	int timer4 = 0;
 	uint32_t tempo;
 
     for (;;) {
@@ -37,7 +42,21 @@ void search_rotate () {
 			motors(TURN_SPEED,-TURN_SPEED);
 		}
 
-		test_stop();
+		stop = test_stop();
+		if(stop){
+			motors(-SPEED,-SPEED);
+			timer1 = get_tick();
+			while(timer2 - timer1 < 500000){
+				timer2 = get_tick();
+			}
+			motors(-TURN_SPEED,TURN_SPEED);
+			timer3 = get_tick();
+			while(timer4-timer3 < 1000000 && !(distance_sensors[LEFT] || distance_sensors[RIGHT])){
+				timer4 = get_tick();
+				update_distance_sensors();	
+			}
+			motors(0,0);
+		};
     }
     
 }

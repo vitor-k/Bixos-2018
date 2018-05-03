@@ -4,6 +4,10 @@
 
 uint16_t line_sensors[2];
 uint16_t distance_sensors[2];
+uint32_t timer1;
+uint32_t timer2 = 0;
+uint32_t timer3;
+uint32_t timer4 = 0;
 
 /* inicializa os sensores */
 void sensors_init() {
@@ -44,5 +48,9 @@ void test_stop(){
     if(line_sensors[RIGHT] || line_sensors[LEFT])
     {
         motors(0,0);
+        return 1;
+    }
+    else{
+        return 0;
     }
 }

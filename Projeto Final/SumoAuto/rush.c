@@ -9,11 +9,30 @@
 
 
 void rush() {
+	int stop = 0;
+	int timer1;
+	int timer2 = 0;
+	int timer3;
+	int timer4 = 0;
     motors_init();
     sensors_init();
     motors(SPEED,SPEED);
     for (;;){
-        test_stop();
+        stop = test_stop();
+		if(stop){
+			motors(-SPEED,-SPEED);
+			timer1 = get_tick();
+			while(timer2 - timer1 < 500000){
+				timer2 = get_tick();
+			}
+			motors(-TURN_SPEED,TURN_SPEED);
+			timer3 = get_tick();
+			while(timer4-timer3 < 1000000 && !(distance_sensors[LEFT] || distance_sensors[RIGHT])){
+				timer4 = get_tick();
+                update_distance_sensors();	
+			}
+			motors(SPEED,SPEED);
+		};
     }
     
 }
