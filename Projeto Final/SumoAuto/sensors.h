@@ -14,6 +14,6 @@ typedef enum {
 void sensors_init();
 void update_line_sensors();
 void update_distance_sensors();
-void test_stop();
+int test_stop();
 
 #endif
