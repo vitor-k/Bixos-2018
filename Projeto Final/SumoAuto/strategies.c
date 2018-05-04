@@ -99,7 +99,8 @@ void track(){
 	uint8_t Lspeed=0, Rspeed=0;
 	for(;;){
 		update_distance_sensors();
-Lspeed = TRACK_SPEED;
+		
+		Lspeed = TRACK_SPEED;
 		if(distance_sensors[RIGHT] >= DISTANCE_THRESHOLD){
 			Lspeed = TURN_SPEED;
 		}
@@ -108,9 +109,9 @@ Lspeed = TRACK_SPEED;
 			Rspeed = TURN_SPEED;
 		}
 
-		motors(SPEED, SPEED);
+		motors(Lspeed, Rspeed);
 		if(test_stop()){
 			turn_edge();
 		}
-  }
+	}
 }
