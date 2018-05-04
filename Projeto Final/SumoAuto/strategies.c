@@ -17,7 +17,7 @@ void turn_edge(){
 }
 
 void rush() {
-	int stop = 0;
+	// int stop = 0;
     motors(SPEED,SPEED);
 
     for (;;){
@@ -30,8 +30,8 @@ void rush() {
 
 void wait_n_see () {
 	int flag = 0;
-	int stop = 0;
-	uint32_t tempo;
+	// int stop = 0;
+	// uint32_t tempo;
     for (;;) {
 		update_distance_sensors();
 		if(distance_sensors[LEFT] >= DISTANCE_THRESHOLD || distance_sensors[RIGHT] >= DISTANCE_THRESHOLD){ /**/
@@ -61,7 +61,7 @@ void wait_n_see () {
 
 void search_rotate () {
 	int flag = 0;
-	int stop = 0;
+	// int stop = 0;
 	/* uint32_t timer3;
 	uint32_t timer4 = 0; */
 	uint32_t tempo;

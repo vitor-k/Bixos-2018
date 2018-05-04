@@ -11,8 +11,8 @@ flash: main.hex
 main.hex : main.elf
 	avr-objcopy -j .text -j .data -O ihex main.elf main.hex
 
-main.elf : main.o motors.o sensors.o utils.o timer.o rush.o search_rotate.o wait_n_see.o
-	avr-gcc -o main.elf main.o motors.o sensors.o utils.o timer.o rush.o search_rotate.o wait_n_see.o -mmcu=atmega168 -std=c99 -Wall -Wextra -Os
+main.elf : main.o motors.o sensors.o utils.o timer.o strategies.o
+	avr-gcc -o main.elf main.o motors.o sensors.o utils.o timer.o strategies.o -mmcu=atmega168 -std=c99 -Wall -Wextra -Os
 
 main.o : main.c
 	avr-gcc -c main.c -o main.o -mmcu=atmega168 -std=c99 -Wall -Wextra -Os -DF_CPU=16000000
@@ -29,11 +29,6 @@ sensors.o : sensors.c
 motors.o : motors.c
 	avr-gcc -c motors.c -o motors.o -mmcu=atmega168 -std=c99 -Wall -Wextra -Os -DF_CPU=16000000
 
-wait_n_see.o : wait_n_see.c
-	avr-gcc -c wait_n_see.c -o wait_n_see.o -mmcu=atmega168 -std=c99 -Wall -Wextra -Os -DF_CPU=16000000
+strategies.o : strategies.c
+	avr-gcc -c strategies.c -o strategies.o -mmcu=atmega168 -std=c99 -Wall -Wextra -Os -DF_CPU=16000000
 
-rush.o : rush.c
-	avr-gcc -c rush.c -o rush.o -mmcu=atmega168 -std=c99 -Wall -Wextra -Os -DF_CPU=16000000
-
-search_rotate.o : search_rotate.c
-	avr-gcc -c search_rotate.c -o search_rotate.o -mmcu=atmega168 -std=c99 -Wall -Wextra -Os -DF_CPU=16000000

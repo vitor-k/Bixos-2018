@@ -16,7 +16,7 @@ int main () {
 
 	typedef void(*StrategyFunction)();
 
-	int escolhida = 1; /*uma maneira eh usar esta variavel para escolher a estrategia, ou pode usar um define*/
+	int escolhida = 2; /*uma maneira eh usar esta variavel para escolher a estrategia, ou pode usar um define*/
 	StrategyFunction strategy;
 
 	switch(escolhida){
@@ -28,6 +28,9 @@ int main () {
 			break;
 		case 2:
 			strategy = search_rotate;
+			break;
+		case 3:
+			strategy = track;
 			break;
 	}
 
