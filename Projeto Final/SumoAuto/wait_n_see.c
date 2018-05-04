@@ -8,9 +8,8 @@
 #include "strategies.h"
 
 
-void wait_n_see () {
+void wait_n_see() {
 	int flag = 0;
-	int stop = 0;
 	uint32_t tempo;
     for (;;) {
 		update_distance_sensors();
@@ -33,7 +32,7 @@ void wait_n_see () {
 			motors(0,0);
 		}
 
-		rush()
+		rush();
     }
 
 }

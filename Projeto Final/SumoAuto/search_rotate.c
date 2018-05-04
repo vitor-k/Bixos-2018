@@ -8,11 +8,8 @@
 #include "strategies.h"
 
 
-void search_rotate () {
+void search_rotate() {
 	int flag = 0;
-	int stop = 0;
-	uint32_t timer3;
-	uint32_t timer4 = 0;
 	uint32_t tempo;
 
     for (;;) {
@@ -36,8 +33,6 @@ void search_rotate () {
 			motors(TURN_SPEED,-TURN_SPEED);
 		}
 
-		rush()
-		};
+		rush();
     }
-
 }
