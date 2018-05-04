@@ -28,7 +28,7 @@ void rush() {
 
 }
 
-void wait_n_see () {
+void wait_n_see() {
 	int flag = 0;
 	// int stop = 0;
 	// uint32_t tempo;
@@ -59,7 +59,7 @@ void wait_n_see () {
 
 }
 
-void search_rotate () {
+void search_rotate() {
 	int flag = 0;
 	// int stop = 0;
 	/* uint32_t timer3;
@@ -99,7 +99,6 @@ void track(){
 	uint8_t Lspeed=0, Rspeed=0;
 	for(;;){
 		update_distance_sensors();
-		
 		Lspeed = TRACK_SPEED;
 		if(distance_sensors[RIGHT] >= DISTANCE_THRESHOLD){
 			Lspeed = TURN_SPEED;
